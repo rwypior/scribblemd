@@ -1,0 +1,47 @@
+﻿{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/${presetName}"
+    },
+    {
+      "name": "base-windows",
+      "hidden": true,
+      "generator": "Ninja",
+      "cacheVariables": {
+        "SCRIBBLEMD_PLATFORM": "windows"
+      }
+    },
+    {
+      "name": "debug-windows",
+      "displayName": "Win64 debug",
+      "inherits": "base-windows",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "release-windows",
+      "displayName": "Win64 release",
+      "inherits": "base-windows",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+
+  "buildPresets": [
+    {
+      "name": "debug",
+      "displayName": "Win64 debug",
+      "configurePreset": "debug-windows"
+    },
+    {
+      "name": "release",
+      "displayName": "Win64 release",
+      "configurePreset": "release-windows"
+    }
+  ]
+}
