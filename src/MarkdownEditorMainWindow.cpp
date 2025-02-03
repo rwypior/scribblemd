@@ -84,6 +84,22 @@ void MarkdownEditorMainWindow::insertNewLineIfNeeded()
 		this->m_editor->WriteText("\n");
 }
 
+bool MarkdownEditorMainWindow::hasUnsavedChanges() const
+{
+	return true;
+}
+
+bool MarkdownEditorMainWindow::assureChangesAreSaved()
+{
+	if (this->hasUnsavedChanges())
+	{
+		//wxMessageBox("Do you want to save changes to the file?", "ScribbleMd", wxICON_QUESTION | wxbutton_yes);
+
+	}
+
+	return true;
+}
+
 // Events
 
 void MarkdownEditorMainWindow::evtCommand(const wxCommandEvent& event)

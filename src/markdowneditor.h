@@ -23,7 +23,7 @@
 #include <wx/textctrl.h>
 #include <wx/sizer.h>
 #include <wx/panel.h>
-#include "wxMarkdownCtrl/wxMarkdownCtrl.h"
+#include "wxmarkdownctrl/wxMarkdownCtrl.h"
 #include <wx/scrolwin.h>
 #include <wx/splitter.h>
 #include <wx/frame.h>

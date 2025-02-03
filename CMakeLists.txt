@@ -20,17 +20,15 @@ endif()
 project ("MarkdownEditor")
 add_executable(MarkdownEditor ${OPTIONS})
 
+find_package(wxWidgets CONFIG REQUIRED COMPONENTS core base html)
+find_package(cppMarkdown)
+find_package(wxMarkdownCtrl)
+
 set_property(TARGET MarkdownEditor PROPERTY CXX_STANDARD 17)
 
-include(cmake/CPM.cmake)
-
-CPMAddPackage("gh:wxWidgets/wxWidgets@3.2.6")
-CPMAddPackage("gh:rwypior/cppMarkdown@0.5")
-CPMAddPackage("gh:rwypior/wxMarkdownCtrl@0.1")
-
-target_link_libraries(MarkdownEditor PUBLIC wx::net wx::core wx::base)
+target_link_libraries(MarkdownEditor PUBLIC wx::core wx::base wx::html)
 target_link_libraries(MarkdownEditor PUBLIC cppMarkdown::cppMarkdown)
-target_link_libraries(MarkdownEditor PUBLIC wxMarkdownCtrl)
+target_link_libraries(MarkdownEditor PUBLIC wxMarkdownCtrl::wxMarkdownCtrl)
 
 # Copy DLLs to exe directory
 add_custom_command(TARGET MarkdownEditor POST_BUILD

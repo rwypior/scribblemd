@@ -27,6 +27,9 @@ private:
 	void insertAndJumpToNextLine(const wxString& text);
 	void insertNewLineIfNeeded();
 
+	bool hasUnsavedChanges() const;
+	bool assureChangesAreSaved();
+
 private:
 	void evtCommand(const wxCommandEvent& event);
 
