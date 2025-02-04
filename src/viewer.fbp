@@ -60,7 +60,7 @@
       <property name="window_name"></property>
       <property name="window_style">wxTAB_TRAVERSAL</property>
       <property name="xrc_skip_sizer">1</property>
-      <object class="wxMenuBar" expanded="false">
+      <object class="wxMenuBar" expanded="true">
         <property name="bg"></property>
         <property name="context_help"></property>
         <property name="context_menu">1</property>
@@ -142,6 +142,23 @@
             <property name="name">m_separator1</property>
             <property name="permission">none</property>
           </object>
+          <object class="wxMenuItem" expanded="true">
+            <property name="bitmap"></property>
+            <property name="checked">0</property>
+            <property name="enabled">1</property>
+            <property name="help"></property>
+            <property name="id">ID_EXPORT</property>
+            <property name="kind">wxITEM_NORMAL</property>
+            <property name="label">Export...</property>
+            <property name="name">exportAs</property>
+            <property name="permission">none</property>
+            <property name="shortcut"></property>
+            <property name="unchecked_bitmap"></property>
+          </object>
+          <object class="separator" expanded="true">
+            <property name="name">m_separator4</property>
+            <property name="permission">none</property>
+          </object>
           <object class="wxMenuItem" expanded="false">
             <property name="bitmap"></property>
             <property name="checked">0</property>
@@ -152,7 +169,7 @@
             <property name="label">Exit</property>
             <property name="name">exit</property>
             <property name="permission">none</property>
-            <property name="shortcut"></property>
+            <property name="shortcut">Alt+F4</property>
             <property name="unchecked_bitmap"></property>
           </object>
         </object>
@@ -170,7 +187,7 @@
             <property name="label">Undo</property>
             <property name="name">undo</property>
             <property name="permission">none</property>
-            <property name="shortcut">Ctrl_Z</property>
+            <property name="shortcut">Ctrl+Z</property>
             <property name="unchecked_bitmap"></property>
           </object>
           <object class="wxMenuItem" expanded="false">
@@ -227,6 +244,23 @@
             <property name="name">paste</property>
             <property name="permission">none</property>
             <property name="shortcut">Ctrl+V</property>
+            <property name="unchecked_bitmap"></property>
+          </object>
+          <object class="separator" expanded="true">
+            <property name="name">m_separator3</property>
+            <property name="permission">none</property>
+          </object>
+          <object class="wxMenuItem" expanded="true">
+            <property name="bitmap"></property>
+            <property name="checked">0</property>
+            <property name="enabled">1</property>
+            <property name="help"></property>
+            <property name="id">ID_ENABLE_EDITOR</property>
+            <property name="kind">wxITEM_CHECK</property>
+            <property name="label">Enable editor</property>
+            <property name="name">enableEditor</property>
+            <property name="permission">none</property>
+            <property name="shortcut">Ctrl+E</property>
             <property name="unchecked_bitmap"></property>
           </object>
         </object>
@@ -306,6 +340,67 @@
         <property name="window_extra_style"></property>
         <property name="window_name"></property>
         <property name="window_style"></property>
+        <object class="tool" expanded="false">
+          <property name="bitmap">Load From Art Provider; wxART_NEW; wxART_TOOLBAR</property>
+          <property name="context_menu">0</property>
+          <property name="id">ID_NEW</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">tool</property>
+          <property name="name">m_toolbar_new</property>
+          <property name="permission">protected</property>
+          <property name="statusbar"></property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="tool" expanded="false">
+          <property name="bitmap">Load From Art Provider; wxART_FILE_OPEN; wxART_TOOLBAR</property>
+          <property name="context_menu">0</property>
+          <property name="id">ID_OPEN</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">tool</property>
+          <property name="name">m_toolbar_open</property>
+          <property name="permission">protected</property>
+          <property name="statusbar"></property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="tool" expanded="false">
+          <property name="bitmap">Load From Art Provider; wxART_FILE_SAVE; wxART_TOOLBAR</property>
+          <property name="context_menu">0</property>
+          <property name="id">ID_SAVE</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">tool</property>
+          <property name="name">m_toolbar_save</property>
+          <property name="permission">protected</property>
+          <property name="statusbar"></property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="tool" expanded="false">
+          <property name="bitmap">Load From Art Provider; wxART_FILE_SAVE_AS; wxART_TOOLBAR</property>
+          <property name="context_menu">0</property>
+          <property name="id">ID_SAVE_AS</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">tool</property>
+          <property name="name">m_toolbar_saveas</property>
+          <property name="permission">protected</property>
+          <property name="statusbar"></property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="toolSeparator" expanded="false">
+          <property name="permission">protected</property>
+        </object>
+        <object class="tool" expanded="false">
+          <property name="bitmap">Load From Art Provider; wxART_REPORT_VIEW; wxART_TOOLBAR</property>
+          <property name="context_menu">0</property>
+          <property name="id">ID_ENABLE_EDITOR</property>
+          <property name="kind">wxITEM_CHECK</property>
+          <property name="label">tool</property>
+          <property name="name">m_toolbar_enableeditor</property>
+          <property name="permission">protected</property>
+          <property name="statusbar"></property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="toolSeparator" expanded="false">
+          <property name="permission">protected</property>
+        </object>
         <object class="tool" expanded="false">
           <property name="bitmap">Load From File; res/para.png</property>
           <property name="context_menu">0</property>

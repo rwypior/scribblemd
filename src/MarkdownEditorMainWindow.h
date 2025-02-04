@@ -20,23 +20,40 @@ public:
 private:
 	typedef void(MarkdownEditorMainWindow::*CommandHandler)(const wxCommandEvent&);
 
-private:
+public:
 	bool isCursorAtLineStart() const;
 	bool isCursorAtEnd() const;
 	void insertAndSelectText(const wxString& text, size_t begin = 0, int length = std::numeric_limits<int>::max());
 	void insertAndJumpToNextLine(const wxString& text);
 	void insertNewLineIfNeeded();
 
-	bool hasUnsavedChanges() const;
-	bool assureChangesAreSaved();
+	void enableEditor();
+	void disableEditor();
+	void toggleEditor();
+
+	bool promptDocumentClose();
+	bool promptSave();
+	bool promptSaveAs();
+
+	bool promptOpen(wxString& outpath);
+	bool promptOpen();
+
+	void newDocument();
+	void save(const wxString& path);
+	void open(const wxString& path);
+	void exportAs();
+	void exportAsHtml(const wxString& path);
 
 private:
+	void setCurrentFilePath(const wxString& path);
+
 	void evtCommand(const wxCommandEvent& event);
 
 	void handlerNew(const wxCommandEvent& event);
 	void handlerOpen(const wxCommandEvent& event);
 	void handlerSave(const wxCommandEvent& event);
 	void handlerSaveAs(const wxCommandEvent& event);
+	void handlerExport(const wxCommandEvent& event);
 	void handlerExit(const wxCommandEvent& event);
 
 	void handlerUndo(const wxCommandEvent& event);
@@ -44,6 +61,7 @@ private:
 	void handlerCut(const wxCommandEvent& event);
 	void handlerCopy(const wxCommandEvent& event);
 	void handlerPaste(const wxCommandEvent& event);
+	void handlerEnableEditor(const wxCommandEvent& event);
 
 	void handlerAbout(const wxCommandEvent& event);
 
@@ -64,8 +82,14 @@ private:
 	void handlerTextChanged(const wxCommandEvent& event);
 	void handlerTimerMarkdown(const wxTimerEvent& event);
 
+	void handlerSplitterDoubleclick(const wxSplitterEvent& event);
+
+	void handlerClose(wxCloseEvent& event);
+
 private:
 	wxTimer timer;
+	bool textChanged = false;
+	wxFileName currentFile;
 };
 
 #endif

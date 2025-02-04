@@ -34,26 +34,28 @@
 #define ID_OPEN 1001
 #define ID_SAVE 1002
 #define ID_SAVE_AS 1003
-#define ID_EXIT 1004
-#define ID_UNDO 1005
-#define ID_REDO 1006
-#define ID_CUT 1007
-#define ID_COPY 1008
-#define ID_PASTE 1009
-#define ID_ABOUT 1010
-#define ID_PARA 1011
-#define ID_H1 1012
-#define ID_H2 1013
-#define ID_H3 1014
-#define ID_H4 1015
-#define ID_H5 1016
-#define ID_H6 1017
-#define ID_LINE 1018
-#define ID_QUOTE 1019
-#define ID_CODEBLOCK 1020
-#define ID_CODE 1021
-#define ID_LINK 1022
-#define ID_IMAGE 1023
+#define ID_EXPORT 1004
+#define ID_EXIT 1005
+#define ID_UNDO 1006
+#define ID_REDO 1007
+#define ID_CUT 1008
+#define ID_COPY 1009
+#define ID_PASTE 1010
+#define ID_ENABLE_EDITOR 1011
+#define ID_ABOUT 1012
+#define ID_PARA 1013
+#define ID_H1 1014
+#define ID_H2 1015
+#define ID_H3 1016
+#define ID_H4 1017
+#define ID_H5 1018
+#define ID_H6 1019
+#define ID_LINE 1020
+#define ID_QUOTE 1021
+#define ID_CODEBLOCK 1022
+#define ID_CODE 1023
+#define ID_LINK 1024
+#define ID_IMAGE 1025
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class MainWindow
@@ -69,6 +71,11 @@ class MainWindow : public wxFrame
 		wxMenu* edit;
 		wxMenu* help;
 		wxToolBar* m_toolBar1;
+		wxToolBarToolBase* m_toolbar_new;
+		wxToolBarToolBase* m_toolbar_open;
+		wxToolBarToolBase* m_toolbar_save;
+		wxToolBarToolBase* m_toolbar_saveas;
+		wxToolBarToolBase* m_toolbar_enableeditor;
 		wxToolBarToolBase* m_paragraph;
 		wxToolBarToolBase* m_h1;
 		wxToolBarToolBase* m_h2;

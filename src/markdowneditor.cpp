@@ -32,15 +32,21 @@ MainWindow::MainWindow( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	file->AppendSeparator();
 
+	wxMenuItem* exportAs;
+	exportAs = new wxMenuItem( file, ID_EXPORT, wxString( wxT("Export...") ) , wxEmptyString, wxITEM_NORMAL );
+	file->Append( exportAs );
+
+	file->AppendSeparator();
+
 	wxMenuItem* exit;
-	exit = new wxMenuItem( file, ID_EXIT, wxString( wxT("Exit") ) , wxEmptyString, wxITEM_NORMAL );
+	exit = new wxMenuItem( file, ID_EXIT, wxString( wxT("Exit") ) + wxT('\t') + wxT("Alt+F4"), wxEmptyString, wxITEM_NORMAL );
 	file->Append( exit );
 
 	m_menubar1->Append( file, wxT("File") );
 
 	edit = new wxMenu();
 	wxMenuItem* undo;
-	undo = new wxMenuItem( edit, ID_UNDO, wxString( wxT("Undo") ) + wxT('\t') + wxT("Ctrl_Z"), wxEmptyString, wxITEM_NORMAL );
+	undo = new wxMenuItem( edit, ID_UNDO, wxString( wxT("Undo") ) + wxT('\t') + wxT("Ctrl+Z"), wxEmptyString, wxITEM_NORMAL );
 	edit->Append( undo );
 
 	wxMenuItem* redo;
@@ -61,6 +67,12 @@ MainWindow::MainWindow( wxWindow* parent, wxWindowID id, const wxString& title, 
 	paste = new wxMenuItem( edit, ID_PASTE, wxString( wxT("Paste") ) + wxT('\t') + wxT("Ctrl+V"), wxEmptyString, wxITEM_NORMAL );
 	edit->Append( paste );
 
+	edit->AppendSeparator();
+
+	wxMenuItem* enableEditor;
+	enableEditor = new wxMenuItem( edit, ID_ENABLE_EDITOR, wxString( wxT("Enable editor") ) + wxT('\t') + wxT("Ctrl+E"), wxEmptyString, wxITEM_CHECK );
+	edit->Append( enableEditor );
+
 	m_menubar1->Append( edit, wxT("Edit") );
 
 	help = new wxMenu();
@@ -73,6 +85,20 @@ MainWindow::MainWindow( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->SetMenuBar( m_menubar1 );
 
 	m_toolBar1 = this->CreateToolBar( wxTB_HORIZONTAL, wxID_ANY );
+	m_toolbar_new = m_toolBar1->AddTool( ID_NEW, wxT("tool"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_NEW), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString, NULL );
+
+	m_toolbar_open = m_toolBar1->AddTool( ID_OPEN, wxT("tool"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_FILE_OPEN), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString, NULL );
+
+	m_toolbar_save = m_toolBar1->AddTool( ID_SAVE, wxT("tool"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_FILE_SAVE), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString, NULL );
+
+	m_toolbar_saveas = m_toolBar1->AddTool( ID_SAVE_AS, wxT("tool"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_FILE_SAVE_AS), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString, NULL );
+
+	m_toolBar1->AddSeparator();
+
+	m_toolbar_enableeditor = m_toolBar1->AddTool( ID_ENABLE_EDITOR, wxT("tool"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_REPORT_VIEW), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_CHECK, wxEmptyString, wxEmptyString, NULL );
+
+	m_toolBar1->AddSeparator();
+
 	m_paragraph = m_toolBar1->AddTool( ID_PARA, wxT("tool"), wxBitmap( wxT("res/para.png"), wxBITMAP_TYPE_ANY ), wxNullBitmap, wxITEM_NORMAL, wxT("Add paragraph"), wxEmptyString, NULL );
 
 	m_h1 = m_toolBar1->AddTool( ID_H1, wxT("tool"), wxBitmap( wxT("res/h1.png"), wxBITMAP_TYPE_ANY ), wxNullBitmap, wxITEM_NORMAL, wxT("Add heading 1"), wxEmptyString, NULL );
