@@ -51,7 +51,7 @@ bool ScribbleMd::OnInit()
 	if (!wxApp::OnInit())
 		return false;
 
-    wxImage::AddHandler(new wxPNGHandler());
+	wxInitAllImageHandlers();
 
     MarkdownEditorMainWindow* window = new MarkdownEditorMainWindow(nullptr);
     window->Show();
