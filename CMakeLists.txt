@@ -20,6 +20,8 @@ endif()
 project ("MarkdownEditor")
 add_executable(MarkdownEditor ${OPTIONS})
 
+target_sources(MarkdownEditor PRIVATE "res/scribble.rc")
+
 find_package(wxWidgets CONFIG REQUIRED COMPONENTS core base html)
 find_package(cppMarkdown)
 find_package(wxMarkdownCtrl)

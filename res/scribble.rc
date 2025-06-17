@@ -1,0 +1,4 @@
+#include <wx/msw/wx.rc>
+
+ApplicationIcon ICON "res/markdown.ico"
+ICONPRG ICON "res/markdown.ico"

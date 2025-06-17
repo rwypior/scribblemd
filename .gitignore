@@ -2,3 +2,4 @@
 out/
 CMakeUserPresets.json
 CMakeSettings.json
+res/*.aps

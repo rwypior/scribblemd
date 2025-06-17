@@ -1,5 +1,7 @@
 #include "MarkdownEditorMainWindow.h"
 
+#include <cppmarkdown/extensions.h>
+
 #include <wx/filename.h>
 #include <wx/stdpaths.h>
 #include <wx/aboutdlg.h>
@@ -80,6 +82,8 @@ MarkdownEditorMainWindow::MarkdownEditorMainWindow( wxWindow* parent )
 	: MainWindow( parent )
 	, timer(this, wxID_ANY)
 {
+	Markdown::registerStandardExtensions();
+
 	this->Bind(wxEVT_MENU, &MarkdownEditorMainWindow::evtCommand, this);
 
 	this->Bind(wxEVT_CLOSE_WINDOW, &MarkdownEditorMainWindow::handlerClose, this);
@@ -104,6 +108,8 @@ MarkdownEditorMainWindow::MarkdownEditorMainWindow( wxWindow* parent )
 	this->SaveGeometry(geometry);
 	geometry = GeometrySettings::readGeometry(geometry);
 	this->RestoreToGeometry(geometry);
+
+	this->m_viewer->insertImageWidth();
 }
 
 // Utils
@@ -224,13 +230,14 @@ bool MarkdownEditorMainWindow::promptSave()
 
 bool MarkdownEditorMainWindow::promptSaveAs()
 {
-	wxFileDialog saveDialog(this, "Markdown editor - save document", wxEmptyString, wxEmptyString, "Markdown files (*.md)|*.md", wxFD_SAVE);
+	wxFileDialog saveDialog(this, "Markdown editor - save document", wxEmptyString, wxEmptyString, "Markdown files (*.md)|*.md|HyperText Markup Language (*.html)|*.html", wxFD_SAVE);
 	int result = saveDialog.ShowModal();
 
 	if (result == wxID_CANCEL)
 		return false;
 
 	this->save(saveDialog.GetPath());
+	
 	return true;
 }
 
@@ -277,7 +284,13 @@ void MarkdownEditorMainWindow::save(const wxString& path)
 	}
 
 	this->setCurrentFilePath(path);
-	fs << this->m_editor->GetValue().ToStdString();
+	wxFileName filename(path);
+	auto ext = filename.GetExt();
+
+	if (ext == "md")
+		fs << this->m_editor->GetValue().ToStdString();
+	else if (ext == "html")
+		fs << this->m_viewer->getMarkdownDocument().getHtml();
 }
 
 void MarkdownEditorMainWindow::open(const wxString& path)
